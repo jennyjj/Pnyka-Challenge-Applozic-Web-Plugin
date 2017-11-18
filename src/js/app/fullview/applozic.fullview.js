@@ -1,3 +1,21 @@
+// trying to access the create group button from fullview.html and add 
+// the moderator as a user to the group chat; having problems finding the
+// code that adds users to a group chat
+$("mck-btn-group-create").click(function(){
+
+    var moderator = $( this ).data('moderator')
+
+    alert(moderator + "has been added to the conversation")
+
+    $applozic.fn.applozic('addGroupMember',{'groupId': groupId,
+                                        'clientGroupId': clientGroupId, //use either groupId or clientGroupId
+                                        'userId': userIdToAdd,
+                                        'role' :  2,  // (optional)  USER(0), ADMIN(1), MODERATOR(2), MEMBER(3)
+                                        'callback': function(response) {console.log(response);}
+                                        });
+
+}
+
 var MCK_GROUP_MAP = [];
 var MCK_CLIENT_GROUP_MAP = [];
 (function($applozic, w, d) {
@@ -295,6 +313,9 @@ var MCK_CLIENT_GROUP_MAP = [];
     };
     $applozic.fn.applozic.defaults = default_options;
 
+    // This is where I found the option for adding group members. I want to
+    // somehow add to this code so that I can add the moderator to the 
+    // group chat.  
     function Applozic(appOptions) {
         var _this = this;
         var MCK_TOKEN;

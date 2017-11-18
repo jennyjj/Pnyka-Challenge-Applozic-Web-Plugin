@@ -342,10 +342,31 @@
 									</div>
 								</div>
 							</div>
+
+							<!-- This is where I added a moderator, but I have been
+							having problems having the moderator be added as a user,
+							so that he/she is added to the chat.  He/she would 
+							need special privileges, such as having a notification
+							every ten minutes if no one has chatted, or if any 
+							of the members have not spoken up in ten minutes. -->
+							<div id="mck-group-create-name-sec" class="mck-group-sub-sec">
+								<div id="mck-group-create-name-box"
+									class="mck-row mck-group-name-box">
+									<div class="blk-lg-12">
+										<div class="mck-label">Moderator</div>
+									</div>
+									<div class="blk-lg-12">
+										<div id="mck-group-create-title"
+											class="mck-group-create-title mck-group-title"
+											contenteditable="true"></div>
+									</div>
+								</div>
+							</div>
+
 							<div id="mck-group-create-btn-sec" class="mck-group-sub-sec">
 								<button type="button" id="mck-btn-group-create"
 									class="mck-btn mck-btn-green mck-btn-group-create"
-									title="Create Group">Create Group</button>
+									title="Create Group" data-moderator="Moderator">Create Group</button>
 							</div>
 						</div>
 					</div>
@@ -836,7 +857,25 @@
 							// To load contact list use below function and pass contacts json in format shown above in variable 'contactjson'.
 							// $applozic.fn.applozic('loadContacts', contactjson);
 						});
+
+
 	</script>
+	<!-- An attempt to create group with the moderator included as a user.  
+	$applozic.fn.applozic('createGroup', {'groupName' : groupName,   // required
+                                       'type' : 1, //(required) 1:private, 2:public, 5:broadcast,7:GroupofTwo
+
+                                       'groupIcon' : group display image // optional
+                                       'clientGroupId' : '',      // optional
+                                       'users': [{ userId:userId1, 
+                                                   displayName:'',
+                                                   groupRole : 2  // (optional)  USER(0), ADMIN(1), MODERATOR(2), MEMBER(3)
+                                                 },
+                                                 { userId:userId2,
+                                                   displayName:'',
+                                                   groupRole :3  // (optional)  USER(0), ADMIN(1), MODERATOR(2), MEMBER(3)
+                                                 }
+                                                ],
+                                                'callback' : function(response){console.log(response);}});-->
 
 </body>
 </html>
